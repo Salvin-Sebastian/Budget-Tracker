@@ -24,7 +24,7 @@ export default function SetupScreen() {
         
         <form onSubmit={handleSubmit} className="setup-form">
           <div className="form-group">
-            <label htmlFor="initial-budget">Total Budget Amount ($)</label>
+            <label htmlFor="initial-budget">Total Budget Amount (₹)</label>
             <input
               type="number"
               id="initial-budget"

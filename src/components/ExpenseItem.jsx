@@ -32,7 +32,7 @@ export default function ExpenseItem({ expense }) {
       </div>
       
       <div className="item-right">
-        <span className="item-amount">${expense.amount.toFixed(2)}</span>
+        <span className="item-amount">₹{expense.amount.toFixed(2)}</span>
         <button 
           onClick={() => deleteExpense(expense.id)} 
           className="delete-btn"

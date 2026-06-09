@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useBudget } from '../context/BudgetContext';
-import { Wallet, TrendingDown, DollarSign, Edit2, Check } from 'lucide-react';
+import { Wallet, TrendingDown, IndianRupee, Edit2, Check } from 'lucide-react';
 
 export default function Dashboard() {
   const { budget, totalExpenses, remainingBudget, updateBudget } = useBudget();
@@ -44,7 +44,7 @@ export default function Dashboard() {
                 </div>
               ) : (
                 <div className="budget-display">
-                  <h2 className="card-value">${parseFloat(budget).toFixed(2)}</h2>
+                  <h2 className="card-value">₹{parseFloat(budget).toFixed(2)}</h2>
                   <button onClick={() => setIsEditing(true)} className="icon-btn edit">
                     <Edit2 size={16} />
                   </button>
@@ -62,7 +62,7 @@ export default function Dashboard() {
           <div className="card-header">
             <div>
               <p className="card-label">Total Expenses</p>
-              <h2 className="card-value">${totalExpenses.toFixed(2)}</h2>
+              <h2 className="card-value">₹{totalExpenses.toFixed(2)}</h2>
             </div>
             <div className="icon-wrapper danger">
               <TrendingDown size={24} />
@@ -76,11 +76,11 @@ export default function Dashboard() {
             <div>
               <p className="card-label">Remaining Balance</p>
               <h2 className="card-value" style={{ color: statusColor }}>
-                ${remainingBudget.toFixed(2)}
+                ₹{remainingBudget.toFixed(2)}
               </h2>
             </div>
             <div className="icon-wrapper" style={{ backgroundColor: `${statusColor}20`, color: statusColor }}>
-              <DollarSign size={24} />
+              <IndianRupee size={24} />
             </div>
           </div>
           
