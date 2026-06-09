@@ -9,7 +9,7 @@ export function useBudget() {
 export function BudgetProvider({ children }) {
   const [budget, setBudget] = useState(() => {
     const saved = localStorage.getItem('budgetTracker_budget');
-    return saved ? JSON.parse(saved) : 2000; // Default budget
+    return saved ? JSON.parse(saved) : null; // No default budget initially
   });
 
   const [expenses, setExpenses] = useState(() => {

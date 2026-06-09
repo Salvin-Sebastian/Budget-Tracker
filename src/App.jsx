@@ -1,32 +1,47 @@
-import { BudgetProvider } from './context/BudgetContext';
+import { BudgetProvider, useBudget } from './context/BudgetContext';
 import Dashboard from './components/Dashboard';
 import ExpenseForm from './components/ExpenseForm';
 import ExpenseList from './components/ExpenseList';
+import SetupScreen from './components/SetupScreen';
+
+function AppContent() {
+  const { budget } = useBudget();
+
+  if (budget === null) {
+    return <SetupScreen />;
+  }
+
+  return (
+    <div className="app-container">
+      <header className="app-header animate-fade-in">
+        <div className="logo-container">
+          <div className="logo-icon"></div>
+          <h1>Budget Tracker</h1>
+        </div>
+        <p className="subtitle">Track your expenses, master your finances</p>
+      </header>
+
+      <main className="main-content">
+        <Dashboard />
+        
+        <div className="content-grid">
+          <div className="form-section">
+            <ExpenseForm />
+          </div>
+          <div className="list-section">
+            <ExpenseList />
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}
 
 function App() {
   return (
     <BudgetProvider>
-      <div className="app-container">
-        <header className="app-header animate-fade-in">
-          <div className="logo-container">
-            <div className="logo-icon"></div>
-            <h1>Antigravity Budget</h1>
-          </div>
-          <p className="subtitle">Track your expenses, master your finances</p>
-        </header>
-
-        <main className="main-content">
-          <Dashboard />
-          
-          <div className="content-grid">
-            <div className="form-section">
-              <ExpenseForm />
-            </div>
-            <div className="list-section">
-              <ExpenseList />
-            </div>
-          </div>
-        </main>      <style>{`
+      <AppContent />
+      <style>{`
         .app-container {
           max-width: 1200px;
           margin: 0 auto;
@@ -82,7 +97,6 @@ function App() {
           }
         }
       `}</style>
-    </div>
     </BudgetProvider>
   );
 }
